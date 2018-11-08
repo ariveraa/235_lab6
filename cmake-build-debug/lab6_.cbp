@@ -78,6 +78,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ariveraa/CLionProjects/lab6 /LinkedList.h">
+			<Option target="lab6_"/>
+		</Unit>
 		<Unit filename="/Users/ariveraa/CLionProjects/lab6 /main.cpp">
 			<Option target="lab6_"/>
 		</Unit>

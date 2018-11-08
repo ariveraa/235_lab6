@@ -6,7 +6,25 @@
 
 #IncludeRegexTransform: 
 
+/Users/ariveraa/CLionProjects/lab6 /LinkedList.h
+stdio.h
+-
+iostream
+-
+string
+-
+sstream
+-
+
 /Users/ariveraa/CLionProjects/lab6 /main.cpp
 iostream
 -
+fstream
+-
+sstream
+-
+stdexcept
+-
+LinkedList.h
+/Users/ariveraa/CLionProjects/lab6 /LinkedList.h
 
