@@ -33,6 +33,15 @@ LinkedList(){
 }
 
 ~LinkedList(){
+    Node *temp = head;
+    for(int i = 0; i < length; i++){
+        head = head-> next;
+        delete temp;
+        temp = head;
+    }
+    length = 0;
+    delete head;
+
 
 }
 void insertHead(listElem value){
@@ -78,7 +87,6 @@ void insertAfter(listElem value, listElem insertionNode){
     bool check = false;
     for(int i = 0 ; i < length  ; i++){
         if(temp -> value == insertionNode){
-            cout << "found it " << endl;
             Node* curr = temp;
             Node* next = temp ->next;
             temp = new Node(value);
@@ -91,20 +99,59 @@ void insertAfter(listElem value, listElem insertionNode){
     if (check){
         length++;
     }
-
-
-
 }
 
 void remove(listElem value){
+    Node *temp = head;
+    Node *curr = head;
+    int index = -1;
+    for(int i = 0; i < length ; i ++){
+        if (temp ->value == value){
+            index = i;
+            curr = temp;
+        }
+        temp = temp->next;
+    }
+    if(index == 0 ){
+        head = curr ->next;
+        delete curr;
+        length --;
+    }
+    if (index > 0){
+        temp = head;
+        for(int i = 0 ; i < index -1; i ++){
+        temp = temp -> next;
+        }
+        temp->next = curr ->next;
+        delete curr;
+        length --;
+    }
 
 }
 
 void clear(){
+    Node *temp = head;
+    for(int i = 0; i < length; i++){
+        head = head-> next;
+        delete temp;
+        temp = head;
+    }
+    length = 0;
 
 }
 
 listElem at(int index){
+    if ((index < 0) || (index >= length)) {
+        cout << "index is out of bounds" << endl;
+        throw out_of_range("index");
+    }
+    else {
+        Node *temp = head;
+        for (int i = 0; i < index ; i++) {
+            temp = temp->next;
+        }
+        return temp->value;
+    }
 
 }
 
@@ -116,7 +163,7 @@ string toString(){
     stringstream ss;
     Node* temp = head;
     for(int i = 0; i < length; i ++){
-       cout << temp -> value << endl;
+
         if (i < length ){
             ss <<  temp ->value << " ";
         }
@@ -132,7 +179,7 @@ string toString(){
 bool duplicateCheck(listElem value){
     Node* temp = head;
     bool check = true;
-    for(int i = 0; i < length - 1; i++) {
+    for(int i = 0; i < length ; i++) {
         if (temp->value == value) {
             cout << "no duplicates allowed" << endl;
             check = false;
